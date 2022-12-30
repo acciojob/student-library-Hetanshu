@@ -15,8 +15,9 @@ public class CardService {
     CardRepository cardRepository3;
 
     public Card createAndReturn(Student student){
-        Card card=student.getCard();
+        Card card=new Card();
         card.setStudent(student);
+        student.setCard(card);
         cardRepository3.save(card);
         //link student with a new card
         return card;
