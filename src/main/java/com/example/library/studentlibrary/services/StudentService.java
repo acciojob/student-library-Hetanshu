@@ -1,6 +1,7 @@
 package com.example.library.studentlibrary.services;
 
 import com.example.library.studentlibrary.models.Card;
+import com.example.library.studentlibrary.models.CardStatus;
 import com.example.library.studentlibrary.models.Student;
 import com.example.library.studentlibrary.repositories.StudentRepository;
 import org.slf4j.Logger;
@@ -33,10 +34,14 @@ public class StudentService {
     }
 
     public void updateStudent(Student student){
-
+        studentRepository4.updateStudentDetails(student);
     }
 
     public void deleteStudent(int id){
         //Delete student and deactivate corresponding card
+//        Student student=studentRepository4.findById(id).get();
+//        Card card=student.getCard();
+        cardService4.deactivateCard(id);
+        studentRepository4.deleteCustom(id);
     }
 }
